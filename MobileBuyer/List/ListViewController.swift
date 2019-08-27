@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     var info:[MobileElement] = []
     var isSelect:Int = 0
     var rating:Int=0
@@ -28,8 +28,8 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MobileTableViewCell
         cell.nameLabel.text = self.info[indexPath.row].name
-        cell.priceLabel.text = "price: \(self.info[indexPath.row].price)"
-        cell.ratingLabel.text = "rating: \(self.info[indexPath.row].rating)"
+        cell.priceLabel.text = "Price: \(self.info[indexPath.row].price)"
+        cell.ratingLabel.text = "Rating: \(self.info[indexPath.row].rating)"
         cell.imageView123.loadImageUrl(self.info[indexPath.row].thumbImageURL)
         cell.descriptionLabel.text = self.info[indexPath.row].mobileDescription
         return cell

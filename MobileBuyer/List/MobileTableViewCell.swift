@@ -9,7 +9,12 @@
 import UIKit
 
 class MobileTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var imageView123: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

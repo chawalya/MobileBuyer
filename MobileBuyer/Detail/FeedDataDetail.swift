@@ -7,3 +7,26 @@
 //
 
 import Foundation
+import Alamofire
+class FeedDataDetail {
+    func getData(url: String, completion: @escaping ([MobileDetailElement]) -> Void) {
+        AF.request(URL (string: url)!, method: .get).responseJSON { (response) in
+            switch response.result{
+            case .success :
+                do {
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode([MobileDetailElement].self, from: response.data!)
+                    completion(result)
+                    print("success------------------------------")
+                } catch (let error) {
+                    print(error)
+                }
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+        
+    }
+}

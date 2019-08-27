@@ -15,6 +15,9 @@ class CustomTabBarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillLayoutSubviews() {
+        tabBar.frame = CGRect(x: 0, y: 75, width: tabBar.frame.size.width, height: tabBar.frame.size.height)
+    }
     
 
     /*

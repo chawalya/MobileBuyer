@@ -9,22 +9,59 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    var mobile: [MobileDetailElement]=[]
+    var selected:Int = 0
+    var descriptionLabel: String = ""
+    var nameLabel:String = ""
+    
+    @IBOutlet weak var priceOutlet: UILabel!
+    @IBOutlet weak var rateLabel: UILabel!
+    var priceLabel: Int=0
+    var ratingLabel: Int=0
+    @IBOutlet var titleItem: UINavigationItem!
+    @IBOutlet weak var mLabel: UILabel!
+    
+    var mFeed:FeedDataDetail!
+    var _url:String=""
+    
+    @IBOutlet weak var mCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        mFeed = FeedDataDetail()
+        _url = "https://scb-test-mobile.herokuapp.com/api/mobiles/\(selected)/images/"
+        print("page2 ===================================")
+        print(_url)
+        self.feedData()
+        mLabel.text=descriptionLabel
+        titleItem.title=nameLabel
+        priceOutlet.text="Rating: \(priceLabel)"
+        rateLabel.text="Price: \(ratingLabel)"
+    }
+    @objc func feedData(){
+            self.mFeed.getData(url: _url) { (result) in
+            for i in result{
+                let newBean = MobileDetailElement(mobileID: i.mobileID, url: i.url, id: i.id)
+                self.mobile.append(newBean)
+            }
+        self.mCollection.reloadData()
+        print (self.mobile.count)
+            
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+extension DetailViewController: UICollectionViewDataSource,UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return mobile.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? DetailCollectionViewCell
+        cell?.imageView123.loadImageUrl(self.mobile[indexPath.row].url)
+
+        return cell!
+
+    }
+}
+
