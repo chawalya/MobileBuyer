@@ -30,10 +30,12 @@ class MobileTableViewCell: UITableViewCell {
             mImageStar  = UIImage(named: "star-tap.png")!
             buttonOutlet.setImage(mImageStar, for: .normal)
             self.mWhenTap = false
+          print("11111111")
         }else{
             mImageStar  = UIImage(named: "star.png")!
             buttonOutlet.setImage(mImageStar, for: .normal)
             self.mWhenTap = true
+          print("2222222")
         }
         listController?.addCellToFavourite(cell : self)
     }

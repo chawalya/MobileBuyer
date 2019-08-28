@@ -11,14 +11,32 @@ import AlamofireImage
 
 class ListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     var info:[MobileElement] = []
+  var temp:[MobileElement] = []
+
     var isSelect:Int = 0
     var rating:Int=0
     var price:Int=0
     var name:String = ""
-    var strDescription:String = ""
+  var arrayID:[Int]=[]
+  
+  @IBAction func allAction(_ sender: Any) {
+    info = temp
+    mTableView.reloadData()
+    
+  }
+  
+  @IBAction func Favourite(_ sender: Any) {
+    temp = info
+    info =  selectedInfo
+    mTableView.reloadData()
+
+    
+  }
+  var strDescription:String = ""
     var selectedInfo : [MobileElement] = []
-    
-    
+    var service:ManagerService!
+    @IBOutlet weak var mTableView: UITableView!
+    var element: MobileElement!
     @IBAction func sortAction(_ sender: Any) {
         self.showNormalAlert()
     }
@@ -26,8 +44,6 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     let _url:String = "https://scb-test-mobile.herokuapp.com/api/mobiles/"
     var mFeed:FeedData!
 
-    @IBOutlet weak var mTableView: UITableView!
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return info.count
     }
@@ -53,7 +69,6 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         price=Int(info[indexPath.row].price)
         self.performSegue(withIdentifier: "showDetail", sender: info[indexPath.row])
     }
-    
     func showNormalAlert() {
         let alert = UIAlertController(title: "Sort", message: "", preferredStyle: .alert)
         
@@ -88,20 +103,31 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         print("================================")
         let indexPathTap = mTableView.indexPath(for: cell)
         let index = indexPathTap?.row
+      
+      self.info[index!].isFav=true
         print(self.info[(indexPathTap?.row)!])
+      
+      if (self.info[index!].isFav==true){
         selectedInfo.append(self.info[index!])
+      } else {
+        selectedInfo.remove(at: index!)
+      }
+      
+//      UserDefaults.standard.set(info[index!].id, forKey: "fav")
+//      print(UserDefaults.standard.value(forKey: "fav"))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mFeed=FeedData()
         self.feedData()
+        
     }
     @objc func feedData(){
         self.info.removeAll()//clear data support not dup data
         self.mFeed.getData(url: _url) { (result) in
             for i in result{
-                let newBean = MobileElement(rating: i.rating, id: i.id, thumbImageURL: i.thumbImageURL, price: i.price, brand: i.brand, name: i.name, mobileDescription: i.mobileDescription)
+                let newBean = MobileElement(rating: i.rating, id: i.id, thumbImageURL: i.thumbImageURL, price: i.price, brand: i.brand, name: i.name, mobileDescription: i.mobileDescription,isFav: i.isFav)
                 self.info.append(newBean)
             }
             self.mTableView.reloadData()
