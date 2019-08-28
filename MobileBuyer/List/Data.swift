@@ -23,3 +23,7 @@ struct MobileElement: Codable {
 }
 
 typealias Mobile = [MobileElement]
+
+import Foundation
+
+

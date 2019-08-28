@@ -14,6 +14,30 @@ class MobileTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var imageView123: UIImageView!
+    @IBOutlet weak var buttonOutlet: UIButton!
+    var mWhenTap:Bool!
+    var mImageStar:UIImage!
+    var listController : ListViewController?
+    
+    func setUpButton(){
+        buttonOutlet.addTarget(self, action: #selector(handleMarkFavorite), for: .touchUpInside)
+        self.mWhenTap = true
+    }
+    
+    @objc
+    func handleMarkFavorite(){
+        if mWhenTap {
+            mImageStar  = UIImage(named: "star-tap.png")!
+            buttonOutlet.setImage(mImageStar, for: .normal)
+            self.mWhenTap = false
+        }else{
+            mImageStar  = UIImage(named: "star.png")!
+            buttonOutlet.setImage(mImageStar, for: .normal)
+            self.mWhenTap = true
+        }
+        listController?.addCellToFavourite(cell : self)
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

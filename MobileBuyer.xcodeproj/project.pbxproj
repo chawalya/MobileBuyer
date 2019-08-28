@@ -24,6 +24,7 @@
 		F906EC9123152CB300A4C4E5 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC9023152CB300A4C4E5 /* DetailCollectionViewCell.swift */; };
 		F906EC932315348500A4C4E5 /* DataDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC922315348500A4C4E5 /* DataDetail.swift */; };
 		F906EC952315641000A4C4E5 /* FeedDataDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC942315641000A4C4E5 /* FeedDataDetail.swift */; };
+		F906EC972316293800A4C4E5 /* ManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC962316293800A4C4E5 /* ManagerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		F906EC9023152CB300A4C4E5 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		F906EC922315348500A4C4E5 /* DataDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetail.swift; sourceTree = "<group>"; };
 		F906EC942315641000A4C4E5 /* FeedDataDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataDetail.swift; sourceTree = "<group>"; };
+		F906EC962316293800A4C4E5 /* ManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				F906EC86231500E800A4C4E5 /* CustomTabBarViewController.swift */,
 				F906EC882315024C00A4C4E5 /* Data.swift */,
 				F906EC8A231503D600A4C4E5 /* FeedData.swift */,
+				F906EC962316293800A4C4E5 /* ManagerService.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				F906EC952315641000A4C4E5 /* FeedDataDetail.swift in Sources */,
 				F906EC932315348500A4C4E5 /* DataDetail.swift in Sources */,
 				F906EC8F231525FE00A4C4E5 /* DetailViewController.swift in Sources */,
+				F906EC972316293800A4C4E5 /* ManagerService.swift in Sources */,
 				F906EC892315024C00A4C4E5 /* Data.swift in Sources */,
 				F906EC832314FE7500A4C4E5 /* SecondViewController.swift in Sources */,
 				F906EC9123152CB300A4C4E5 /* DetailCollectionViewCell.swift in Sources */,

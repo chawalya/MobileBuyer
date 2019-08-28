@@ -16,6 +16,13 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     var price:Int=0
     var name:String = ""
     var strDescription:String = ""
+    var selectedInfo : [MobileElement] = []
+    
+    
+    @IBAction func sortAction(_ sender: Any) {
+        self.showNormalAlert()
+    }
+    
     let _url:String = "https://scb-test-mobile.herokuapp.com/api/mobiles/"
     var mFeed:FeedData!
 
@@ -27,6 +34,8 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MobileTableViewCell
+        cell.listController = self
+        cell.setUpButton()
         cell.nameLabel.text = self.info[indexPath.row].name
         cell.priceLabel.text = "Price: \(self.info[indexPath.row].price)"
         cell.ratingLabel.text = "Rating: \(self.info[indexPath.row].rating)"
@@ -45,11 +54,48 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         self.performSegue(withIdentifier: "showDetail", sender: info[indexPath.row])
     }
     
+    func showNormalAlert() {
+        let alert = UIAlertController(title: "Sort", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Price low to high", style: .default, handler: { (_) in
+            self.info.sort { (first: MobileElement, second: MobileElement) -> Bool in
+                first.price < second.price
+            }
+            self.mTableView.reloadData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Price high to low", style: .default, handler: { (_) in
+            self.info.sort { (first: MobileElement, second: MobileElement) -> Bool in
+                first.price > second.price
+            }
+            self.mTableView.reloadData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Rating", style: .default, handler: { (_) in
+            self.info.sort { (first: MobileElement, second: MobileElement) -> Bool in
+                first.rating < second.rating
+            }
+            self.mTableView.reloadData()
+
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+   
+    func addCellToFavourite(cell: UITableViewCell){
+        print("================================")
+        let indexPathTap = mTableView.indexPath(for: cell)
+        let index = indexPathTap?.row
+        print(self.info[(indexPathTap?.row)!])
+        selectedInfo.append(self.info[index!])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mFeed=FeedData()
         self.feedData()
-
     }
     @objc func feedData(){
         self.info.removeAll()//clear data support not dup data
