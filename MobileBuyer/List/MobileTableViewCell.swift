@@ -28,14 +28,10 @@ class MobileTableViewCell: UITableViewCell {
     @objc
     func handleMarkFavorite() {
         if isFavorited { // isFav
-//            mImageStar = UIImage(named: "star.png")!
-//            buttonOutlet.setImage(mImageStar, for: .normal)
             isFavorited = false
             listController?.mobileList[index!].isFav = false
 
         } else {
-//            mImageStar = UIImage(named: "star-tap.png")!
-//            buttonOutlet.setImage(mImageStar, for: .normal)
             isFavorited = true
             listController?.mobileList[index!].isFav = true
 
@@ -47,15 +43,9 @@ class MobileTableViewCell: UITableViewCell {
       if isFav { // isFav
         mImageStar = UIImage(named: "star-tap.png")!
         buttonOutlet.setImage(mImageStar, for: .normal)
-//        mWhenTap = false
-//        listController?.mobileList[index!].isFav = false
-        //            listController?.temp[index!].isFav = false
       } else {
         mImageStar = UIImage(named: "star.png")!
         buttonOutlet.setImage(mImageStar, for: .normal)
-//        mWhenTap = true
-//        listController?.mobileList[index!].isFav = true
-        //            listController?.temp[index!].isFav = true
     }
   }
   

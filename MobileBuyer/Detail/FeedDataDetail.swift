@@ -9,9 +9,12 @@
 import Foundation
 import Alamofire
 class FeedDataDetail {
-// var _url = "https://scb-test-mobile.herokuapp.com/api/mobiles/\(selected)/images/"
-    func getData(url: String, completion: @escaping ([MobileDetailElement]) -> Void) {
-        AF.request(URL (string: url)!, method: .get).responseJSON { (response) in
+   var _url = "https://scb-test-mobile.herokuapp.com/api/mobiles/%@/images/"
+  
+  func getData(id: String,view:UIViewController, completion: @escaping ([MobileDetailElement]) -> Void) {
+    let url = String(format: _url, id)
+        AF.request(URL (string:
+          url)!, method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do {
@@ -22,7 +25,15 @@ class FeedDataDetail {
                     print(error)
                 }
             case .failure(let error):
-                print(error)
+              if error._code == NSURLErrorTimedOut {
+                let alertVC = UIAlertController(title: "Server Not response ", message: "", preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                view.present(alertVC, animated: true, completion: nil)
+              }
+              let alertVC = UIAlertController(title: "Network not connection", message: "", preferredStyle: .alert)
+              alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+              view.present(alertVC, animated: true, completion: nil)
+
             }
         }
         
