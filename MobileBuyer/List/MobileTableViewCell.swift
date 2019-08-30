@@ -9,38 +9,56 @@
 import UIKit
 
 class MobileTableViewCell: UITableViewCell {
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var imageView123: UIImageView!
-    @IBOutlet weak var buttonOutlet: UIButton!
-    var mWhenTap:Bool!
-    var mImageStar:UIImage!
-    var listController : ListViewController?
-    
-    func setUpButton(){
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var imageView123: UIImageView!
+    @IBOutlet var buttonOutlet: UIButton!
+    var isHidden2: Bool?
+    var index: Int?
+    var isFavorited: Bool = false
+    var mImageStar: UIImage!
+    var listController: ListViewController?
+
+    func setUpButton() {
         buttonOutlet.addTarget(self, action: #selector(handleMarkFavorite), for: .touchUpInside)
-        self.mWhenTap = true
     }
-    
+
     @objc
-    func handleMarkFavorite(){
-        if mWhenTap {
-            mImageStar  = UIImage(named: "star-tap.png")!
-            buttonOutlet.setImage(mImageStar, for: .normal)
-            self.mWhenTap = false
-          print("11111111")
-        }else{
-            mImageStar  = UIImage(named: "star.png")!
-            buttonOutlet.setImage(mImageStar, for: .normal)
-            self.mWhenTap = true
-          print("2222222")
+    func handleMarkFavorite() {
+        if isFavorited { // isFav
+//            mImageStar = UIImage(named: "star.png")!
+//            buttonOutlet.setImage(mImageStar, for: .normal)
+            isFavorited = false
+            listController?.mobileList[index!].isFav = false
+
+        } else {
+//            mImageStar = UIImage(named: "star-tap.png")!
+//            buttonOutlet.setImage(mImageStar, for: .normal)
+            isFavorited = true
+            listController?.mobileList[index!].isFav = true
+
         }
-        listController?.addCellToFavourite(cell : self)
+        listController?.addCellToFavourite()
     }
-    
-    
+  
+  func updateFav(isFav: Bool){
+      if isFav { // isFav
+        mImageStar = UIImage(named: "star-tap.png")!
+        buttonOutlet.setImage(mImageStar, for: .normal)
+//        mWhenTap = false
+//        listController?.mobileList[index!].isFav = false
+        //            listController?.temp[index!].isFav = false
+      } else {
+        mImageStar = UIImage(named: "star.png")!
+        buttonOutlet.setImage(mImageStar, for: .normal)
+//        mWhenTap = true
+//        listController?.mobileList[index!].isFav = true
+        //            listController?.temp[index!].isFav = true
+    }
+  }
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -48,8 +66,6 @@ class MobileTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }

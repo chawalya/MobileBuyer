@@ -6,28 +6,32 @@
 //  Copyright © 2562 SCB. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class FeedData {
-    func getData(url: String, completion: @escaping ([MobileElement]) -> Void) {
-        AF.request(URL (string: url)!, method: .get).responseJSON { (response) in
-            switch response.result{
-            case .success :
+  let _url: String = "https://scb-test-mobile.herokuapp.com/api/mobiles/"
+  func getData(view:UIViewController, completion: @escaping ([MobileElement]) -> Void) {
+        AF.request(URL(string: _url)!, method: .get).responseJSON { response in
+            switch response.result {
+            case .success:
                 do {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode([MobileElement].self, from: response.data!)
                     completion(result)
-                    print("success------------------------------")
-                } catch (let error) {
+                } catch let error {
                     print(error)
                 }
-                break
-            case .failure(let error):
-                print(error)
-                break
+            case let .failure(error):
+              if error._code == NSURLErrorTimedOut {
+                let alertVC = UIAlertController(title: "Server Not response ", message: "", preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                view.present(alertVC, animated: true, completion: nil)
+              }
+              let alertVC = UIAlertController(title: "Network not connection", message: "", preferredStyle: .alert)
+              alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+              view.present(alertVC, animated: true, completion: nil)
             }
         }
-        
     }
 }

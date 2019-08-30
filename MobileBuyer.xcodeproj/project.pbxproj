@@ -14,9 +14,7 @@
 		F906EC742314EC0700A4C4E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906EC732314EC0700A4C4E5 /* Assets.xcassets */; };
 		F906EC772314EC0700A4C4E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F906EC752314EC0700A4C4E5 /* LaunchScreen.storyboard */; };
 		F906EC812314FE1800A4C4E5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC802314FE1800A4C4E5 /* ListViewController.swift */; };
-		F906EC832314FE7500A4C4E5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC822314FE7500A4C4E5 /* SecondViewController.swift */; };
 		F906EC852314FEAE00A4C4E5 /* MobileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC842314FEAE00A4C4E5 /* MobileTableViewCell.swift */; };
-		F906EC87231500E800A4C4E5 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC86231500E800A4C4E5 /* CustomTabBarViewController.swift */; };
 		F906EC892315024C00A4C4E5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC882315024C00A4C4E5 /* Data.swift */; };
 		F906EC8B231503D600A4C4E5 /* FeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC8A231503D600A4C4E5 /* FeedData.swift */; };
 		F906EC8D2315071900A4C4E5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F906EC8C2315071900A4C4E5 /* Podfile */; };
@@ -24,7 +22,7 @@
 		F906EC9123152CB300A4C4E5 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC9023152CB300A4C4E5 /* DetailCollectionViewCell.swift */; };
 		F906EC932315348500A4C4E5 /* DataDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC922315348500A4C4E5 /* DataDetail.swift */; };
 		F906EC952315641000A4C4E5 /* FeedDataDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC942315641000A4C4E5 /* FeedDataDetail.swift */; };
-		F906EC972316293800A4C4E5 /* ManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906EC962316293800A4C4E5 /* ManagerService.swift */; };
+		F9FC1AEC23166266003A7C3D /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9FC1AEB23166266003A7C3D /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +37,7 @@
 		F906EC762314EC0700A4C4E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F906EC782314EC0700A4C4E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F906EC802314FE1800A4C4E5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		F906EC822314FE7500A4C4E5 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F906EC842314FEAE00A4C4E5 /* MobileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileTableViewCell.swift; sourceTree = "<group>"; };
-		F906EC86231500E800A4C4E5 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		F906EC882315024C00A4C4E5 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		F906EC8A231503D600A4C4E5 /* FeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedData.swift; sourceTree = "<group>"; };
 		F906EC8C2315071900A4C4E5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -49,7 +45,7 @@
 		F906EC9023152CB300A4C4E5 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		F906EC922315348500A4C4E5 /* DataDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDetail.swift; sourceTree = "<group>"; };
 		F906EC942315641000A4C4E5 /* FeedDataDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataDetail.swift; sourceTree = "<group>"; };
-		F906EC962316293800A4C4E5 /* ManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerService.swift; sourceTree = "<group>"; };
+		F9FC1AEB23166266003A7C3D /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +107,7 @@
 				F906EC732314EC0700A4C4E5 /* Assets.xcassets */,
 				F906EC752314EC0700A4C4E5 /* LaunchScreen.storyboard */,
 				F906EC782314EC0700A4C4E5 /* Info.plist */,
+				F9FC1AEB23166266003A7C3D /* Detail.storyboard */,
 			);
 			path = MobileBuyer;
 			sourceTree = "<group>";
@@ -119,12 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				F906EC802314FE1800A4C4E5 /* ListViewController.swift */,
-				F906EC822314FE7500A4C4E5 /* SecondViewController.swift */,
 				F906EC842314FEAE00A4C4E5 /* MobileTableViewCell.swift */,
-				F906EC86231500E800A4C4E5 /* CustomTabBarViewController.swift */,
 				F906EC882315024C00A4C4E5 /* Data.swift */,
 				F906EC8A231503D600A4C4E5 /* FeedData.swift */,
-				F906EC962316293800A4C4E5 /* ManagerService.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -203,6 +197,7 @@
 				F906EC772314EC0700A4C4E5 /* LaunchScreen.storyboard in Resources */,
 				F906EC742314EC0700A4C4E5 /* Assets.xcassets in Resources */,
 				F906EC8D2315071900A4C4E5 /* Podfile in Resources */,
+				F9FC1AEC23166266003A7C3D /* Detail.storyboard in Resources */,
 				F906EC722314EC0500A4C4E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,12 +254,9 @@
 				F906EC952315641000A4C4E5 /* FeedDataDetail.swift in Sources */,
 				F906EC932315348500A4C4E5 /* DataDetail.swift in Sources */,
 				F906EC8F231525FE00A4C4E5 /* DetailViewController.swift in Sources */,
-				F906EC972316293800A4C4E5 /* ManagerService.swift in Sources */,
 				F906EC892315024C00A4C4E5 /* Data.swift in Sources */,
-				F906EC832314FE7500A4C4E5 /* SecondViewController.swift in Sources */,
 				F906EC9123152CB300A4C4E5 /* DetailCollectionViewCell.swift in Sources */,
 				F906EC812314FE1800A4C4E5 /* ListViewController.swift in Sources */,
-				F906EC87231500E800A4C4E5 /* CustomTabBarViewController.swift in Sources */,
 				F906EC852314FEAE00A4C4E5 /* MobileTableViewCell.swift in Sources */,
 				F906EC6F2314EC0500A4C4E5 /* ViewController.swift in Sources */,
 				F906EC6D2314EC0500A4C4E5 /* AppDelegate.swift in Sources */,

@@ -7,7 +7,6 @@
 //
 import Foundation
 
-// MARK: - MobileDetailElement
 struct MobileDetailElement: Codable {
     let mobileID: Int
     let url: String

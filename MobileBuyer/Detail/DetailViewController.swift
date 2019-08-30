@@ -9,59 +9,53 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var mobile: [MobileDetailElement]=[]
-    var selected:Int = 0
+    var mobile: [MobileDetailElement] = []
+    var selected: Int = 0
     var descriptionLabel: String = ""
-    var nameLabel:String = ""
-    
-    @IBOutlet weak var priceOutlet: UILabel!
-    @IBOutlet weak var rateLabel: UILabel!
-    var priceLabel: Int=0
-    var ratingLabel: Int=0
-    @IBOutlet var titleItem: UINavigationItem!
-    @IBOutlet weak var mLabel: UILabel!
-    
-    var mFeed:FeedDataDetail!
-    var _url:String=""
-    
-    @IBOutlet weak var mCollection: UICollectionView!
+    var nameLabel: String = ""
+    var priceLabel: Int = 0
+    var ratingLabel: Int = 0
+  var mobileDetail:MobileElement?
+    var mFeed: FeedDataDetail!
+    var _url: String = ""
+
+    @IBOutlet var priceOutlet: UILabel!
+    @IBOutlet var rateLabel: UILabel!
+    @IBOutlet var mLabel: UILabel!
+    @IBOutlet var mCollection: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mFeed = FeedDataDetail()
-        _url = "https://scb-test-mobile.herokuapp.com/api/mobiles/\(selected)/images/"
-        print("page2 ===================================")
-        print(_url)
-        self.feedData()
-        mLabel.text=descriptionLabel
-        titleItem.title=nameLabel
-        priceOutlet.text="Rating: \(priceLabel)"
-        rateLabel.text="Price: \(ratingLabel)"
+      selected = mobileDetail?.id ?? 1
+      print(mobileDetail!)
+      _url = "https://scb-test-mobile.herokuapp.com/api/mobiles/\(selected)/images/"
+        feedData()
+        mLabel.text = mobileDetail?.mobileDescription
+      priceOutlet.text = "Price: \(String(describing: mobileDetail?.price))"
+        rateLabel.text = "Rating: \(String(describing: mobileDetail?.rating))"
     }
-    @objc func feedData(){
-            self.mFeed.getData(url: _url) { (result) in
-            for i in result{
+
+    @objc func feedData() {
+        mFeed.getData(url: _url) { result in
+            for i in result {
                 let newBean = MobileDetailElement(mobileID: i.mobileID, url: i.url, id: i.id)
                 self.mobile.append(newBean)
             }
-        self.mCollection.reloadData()
-        print (self.mobile.count)
-            
+            self.mCollection.reloadData()
+            print(self.mobile.count)
         }
     }
-    
-
 }
-extension DetailViewController: UICollectionViewDataSource,UICollectionViewDelegate{
+
+extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return mobile.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as? DetailCollectionViewCell
-        cell?.imageView123.loadImageUrl(self.mobile[indexPath.row].url)
-
+        cell?.imageView123.loadImageUrl(mobile[indexPath.row].url)
         return cell!
-
     }
 }
-
